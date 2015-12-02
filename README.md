@@ -28,8 +28,8 @@ After that, see if you can:
 
 - Only store the latest 20 messages
 - Truncate messages to a desired length
-- Prevente JavaScript injection attacks by escaping input
-- Prevente users from spamming the same message over and over
+- Prevent JavaScript injection attacks by escaping input
+- Prevent users from spamming the same message over and over
 
 
 ##Notes
