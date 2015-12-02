@@ -2,6 +2,7 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var escape = require('html-escape');
 var app = express();
+var fs = require('fs');
 
 var cfg = {
   port: process.env.PORT || 8080,
@@ -28,6 +29,10 @@ var server = app.listen(cfg.port, cfg.hostname, function () {
 
 var messages = [];
 
+if (fs.existsSync('messages.txt')) {
+  messages = JSON.parse(fs.readFileSync('messages.txt', 'utf8'));
+}
+
 
 /* API Routes */
 
@@ -36,7 +41,27 @@ app.post('/send', function (req, res) {
   var content = req.body.content;
   var timestamp = Date.now();
 
-  // TODO: Save message
+  user = user.substring(0, 30);
+  content = content.substring(0, 100);
+
+  content = escape(content);
+
+  if (messages.length >= 1) {
+    var lastMessage = messages[messages.length - 1];
+    if (content === lastMessage.content) {
+      res.status(400).send('stop spamming!');
+      return;
+    }
+  }
+
+  var object = {user: user, content: content, timestamp: timestamp};
+
+  messages.push(object);
+
+  if (messages.length > 10) {
+    messages.shift();
+  }
+  fs.writeFileSync('messages.txt', JSON.stringify(messages), 'utf8');
 
   res.send('ok');
 });
