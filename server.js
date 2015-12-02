@@ -12,6 +12,13 @@ app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded());
 app.use(express.static('public'));
 
+// CORS headers
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
+
 var server = app.listen(cfg.port, cfg.hostname, function () {
   console.log('listening on ' + cfg.hostname + ':' + cfg.port);
 });
