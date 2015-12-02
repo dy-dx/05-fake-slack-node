@@ -22,9 +22,14 @@ In the bash terminal, run the command `npm install` to install the required node
 
 ##Instructions
 
-In the bash terminal, start the node server with the command `node server.js`. Stop the server with `ctrl+c`.
-
 Follow the skeleton code in `server.js` to complete the chat server.
+
+After that, see if you can:
+
+- Only store the latest 20 messages
+- Truncate messages to a desired length
+- Prevente JavaScript injection attacks by escaping input
+- Prevente users from spamming the same message over and over
 
 
 ##Notes
