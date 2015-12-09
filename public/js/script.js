@@ -27,7 +27,7 @@ $('#submit-message').submit(function (e) {
 
 function formatMessage(message) {
   var timeString = new Date(message.timestamp).toLocaleTimeString();
-  return '<li><span class="timestamp">' + timeString + '</span> ' + '<span class="username">' + message.user + '</span>' + ': ' + message.content + '</li>';
+  return '<li><div class="avatar"></div><span class="timestamp">' + timeString + '</span> ' + '<span class="username">' + message.user + '</span>' + ': ' + message.content + '</li>';
 }
 
 /* use setInterval to periodically get new messages and update the list */

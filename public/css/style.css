@@ -44,3 +44,9 @@ li:nth-child(even) {
     color: gray;
     margin-right: 6px;
 }
+
+.avatar {
+    width: 100px;
+    height: 100px;
+    background-image: url('https://www.placecage.com/100/100');
+}
